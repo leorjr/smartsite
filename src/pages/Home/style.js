@@ -3,13 +3,14 @@ import styled from "styled-components";
 export const SectionStyled = styled.section`
   width: 90%;
   margin: 0 auto;
-
+  max-width: 653px;
   border: 4px solid #ededed;
   border-radius: 10px;
 `;
 
 export const ContainerStyled = styled.div`
   width: 95%;
+
   margin: 0 auto;
   color: #828282;
 

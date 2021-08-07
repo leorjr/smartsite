@@ -1,38 +1,90 @@
 import { SectionStyled, ContainerStyled } from "./style";
-
-// import { useUnits } from "../../providers/Units";
-
 import Imagem from "../../assets/icon-hour.png";
-import Card from "../../components/Card";
 import CardList from "../../components/CardList";
-
 import { useState } from "react";
-
 import locations from "../../db/locations.json";
 
 const Home = () => {
-  // const { units } = useUnits();
-  // const [weekDays, setWeekDays] = useState("all");
-  // const [opened, setOpened] = useState(true);
-  // const unitsFiltered = opened
-  //   ? units.filter((unit) => {
-  //       return unit.opened === opened;
-  //     })
-  //   : units;
-
-  //UTILIZANDO O DADO MOCADO DO JSON
+  //Utilizando dados mock do JSON por conta de que algumas vezes a API ficava indisponível mas,
+  //existe o context que solicita os dados  da mesma, caso queiram consultar.
   const [units] = useState(locations.locations);
-  const [weekDays, setWeekDays] = useState("all");
+  const [weekDays, setWeekDays] = useState();
   const [opened, setOpened] = useState(true);
-  const unitsFiltered = opened
-    ? units.filter((unit) => {
-        return unit.opened === opened;
-      })
-    : units;
+  const [filtrados, setFiltrados] = useState([]);
+
+  const tratarHorario = (unit, limit) => {
+    if (unit.opened !== true) {
+      return false;
+    }
+    let horario = unit.schedules[0].hour;
+    horario = horario
+      .replace(" ", "")
+      .replace(" ", "")
+      .replace("h", "")
+      .replace("h", "")
+      .split("às");
+
+    console.log(horario);
+
+    let hour = [];
+
+    for (let i = 0; i < horario.length; i++) {
+      hour.push(parseInt(horario[i]));
+    }
+
+    console.log(hour);
+
+    //verificar se existe
+    if (limit <= 12) {
+      if (hour[1] <= limit) {
+        return true;
+      }
+    }
+
+    if (limit <= 18) {
+      if (hour[1] <= limit) {
+        return true;
+      }
+    }
+
+    if (limit <= 23) {
+      if (hour[1] <= limit) {
+        return true;
+      }
+    }
+  };
 
   const handleSearch = () => {
-    console.log(weekDays);
-    console.log(opened);
+    let filtragem;
+
+    if (weekDays === undefined) {
+      filtragem = units;
+    }
+
+    if (weekDays === "manha") {
+      filtragem = units.filter((unit) => {
+        return tratarHorario(unit, 12) === true;
+      });
+    }
+
+    if (weekDays === "tarde") {
+      filtragem = units.filter((unit) => {
+        return tratarHorario(unit, 18) === true;
+      });
+    }
+
+    if (weekDays === "noite") {
+      filtragem = units.filter((unit) => {
+        return tratarHorario(unit, 23) === true;
+      });
+    }
+
+    setFiltrados(filtragem);
+  };
+
+  const handleClear = () => {
+    setOpened(false);
+    setFiltrados([]);
   };
 
   return (
@@ -85,7 +137,7 @@ const Home = () => {
                 value="noite"
                 onClick={(e) => setWeekDays(e.target.value)}
               />
-              <label for="Noite">Noite</label>
+              <label for="noite">Noite</label>
             </div>
             <p>18:01 às 23:00</p>
           </div>
@@ -95,12 +147,13 @@ const Home = () => {
                 type="checkbox"
                 id="closed"
                 name="closed"
+                checked={opened}
                 value={opened}
                 onChange={() => setOpened(!opened)}
               />
               <label for="closed">Exibir unidades fechadas</label>
             </div>
-            <p>Resultados encontrados: {unitsFiltered.length}</p>
+            <p>Resultados encontrados: {filtrados.length}</p>
           </div>
           <div className="controlles">
             <div className="search">
@@ -110,17 +163,13 @@ const Home = () => {
             </div>
             <div className="clean">
               <div>
-                <button>Limpar</button>
+                <button onClick={handleClear}>Limpar</button>
               </div>
             </div>
           </div>
         </ContainerStyled>
       </SectionStyled>
-      {unitsFiltered ? (
-        <CardList locations={unitsFiltered} />
-      ) : (
-        <CardList locations={units} />
-      )}
+      <CardList units={filtrados} />
     </>
   );
 };

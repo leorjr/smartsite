@@ -2,12 +2,7 @@ import { ExternalContainer, InternalContainer } from "./style";
 
 import Card from "../Card";
 
-import locations from "../../db/locations.json";
-import { useState } from "react";
-
-const CardList = () => {
-  const [units] = useState(locations.locations);
-
+const CardList = ({ units }) => {
   return (
     <>
       <ExternalContainer>
