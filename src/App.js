@@ -4,6 +4,7 @@ import "./App.css";
 import { useUnits } from "./providers/Units";
 
 import FilterUnit from "./components/FilterUnit";
+import Caption from "./components/Caption";
 
 function App() {
   // const { units } = useUnits();
@@ -35,7 +36,8 @@ function App() {
                 return <li>{unit.title}</li>;
               })}
       </div> */}
-      <FilterUnit />
+      {/* <FilterUnit /> */}
+      <Caption />
     </div>
   );
 }

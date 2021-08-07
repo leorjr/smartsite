@@ -101,11 +101,11 @@ const FilterUnit = () => {
           </div>
         </ContainerStyled>
       </SectionStyled>
-      <div>
+      {/* <div>
         {unitsFiltered.map((unit) => {
           return <li>{unit.title}</li>;
         })}
-      </div>
+      </div> */}
     </>
   );
 };
