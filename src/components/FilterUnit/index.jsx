@@ -1,11 +1,24 @@
 import { SectionStyled, ContainerStyled } from "./style";
 
-import { useOpened } from "../../providers/Opened";
+import { useUnits } from "../../providers/Units";
 
 import Imagem from "../../assets/icon-hour.png";
+import { useState } from "react";
 
 const FilterUnit = () => {
-  // const { opened, setOpened } = useOpened();
+  const { units } = useUnits();
+  const [weekDays, setWeekDays] = useState("all");
+  const [opened, setOpened] = useState(true);
+  const unitsFiltered = opened
+    ? units.filter((unit) => {
+        return unit.opened === opened;
+      })
+    : units;
+
+  const handleSearch = () => {
+    console.log(weekDays);
+    console.log(opened);
+  };
 
   return (
     <>
@@ -29,7 +42,7 @@ const FilterUnit = () => {
                 id="manha"
                 name="weekdays"
                 value="manha"
-                // onClick={(e) => setWeekdays(e.target.value)}
+                onClick={(e) => setWeekDays(e.target.value)}
               />
               <label for="manha">Manhã</label>
             </div>
@@ -42,7 +55,7 @@ const FilterUnit = () => {
                 id="tarde"
                 name="weekdays"
                 value="tarde"
-                // onClick={(e) => setWeekdays(e.target.value)}
+                onClick={(e) => setWeekDays(e.target.value)}
               />
               <label for="tarde">Tarde</label>
             </div>
@@ -54,8 +67,8 @@ const FilterUnit = () => {
                 type="radio"
                 id="Noite"
                 name="weekdays"
-                value="Noite"
-                // onClick={(e) => setWeekdays(e.target.value)}
+                value="noite"
+                onClick={(e) => setWeekDays(e.target.value)}
               />
               <label for="Noite">Noite</label>
             </div>
@@ -67,17 +80,17 @@ const FilterUnit = () => {
                 type="checkbox"
                 id="closed"
                 name="closed"
-                // value={opened}
-                // onChange={() => setOpened(!opened)}
+                value={opened}
+                onChange={() => setOpened(!opened)}
               />
               <label for="closed">Exibir unidades fechadas</label>
             </div>
-            <p>Resultados encontrados: 0</p>
+            <p>Resultados encontrados: {unitsFiltered.length}</p>
           </div>
           <div className="controlles">
             <div className="search">
               <div>
-                <button>encontrar unidade</button>
+                <button onClick={handleSearch}>encontrar unidade</button>
               </div>
             </div>
             <div className="clean">
@@ -88,64 +101,13 @@ const FilterUnit = () => {
           </div>
         </ContainerStyled>
       </SectionStyled>
+      <div>
+        {unitsFiltered.map((unit) => {
+          return <li>{unit.title}</li>;
+        })}
+      </div>
     </>
   );
 };
 
 export default FilterUnit;
-
-/* 
-
-        <div>
-          <h2>Qual período quer treinar?</h2>
-          <div>
-            <div>
-              <input
-                type="radio"
-                id="manha"
-                name="weekdays"
-                value="manha"
-                // onClick={(e) => setWeekdays(e.target.value)}
-              />
-              <label for="manha">Manhã</label>
-            </div>
-            <div>
-              <input
-                type="radio"
-                id="tarde"
-                name="weekdays"
-                value="tarde"
-                // onClick={(e) => setWeekdays(e.target.value)}
-              />
-              <label for="tarde">Tarde</label>
-            </div>
-            <div>
-              <input
-                type="radio"
-                id="Noite"
-                name="weekdays"
-                value="Noite"
-                // onClick={(e) => setWeekdays(e.target.value)}
-              />
-              <label for="Noite">Noite</label>
-            </div>
-          </div>
-          <div>
-            <div>
-              <input
-                type="checkbox"
-                id="closed"
-                name="closed"
-                // value={opened}
-                // onChange={() => setOpened(!opened)}
-              />
-              <label for="closed">Exibir unidades fechadas</label>
-            </div>
-            <p>Resultados encontrados: 0</p>
-          </div>
-          <div>
-            {/* <button onClick={handleClick}>Encontrar Unidade</button> 
-          </div>
-        </div>
-
-*/
