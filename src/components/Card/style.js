@@ -2,11 +2,14 @@ import styled from "styled-components";
 
 export const ExternalContainer = styled.div`
   width: 250px;
+  height: 333px;
   background-color: #f5f5f5;
   color: #6f6f6f;
   font-weight: 300;
   border-radius: 10px;
   border: 2px solid #ededed;
+
+  margin: 5px;
 `;
 
 export const InternalContainer = styled.div`
@@ -16,7 +19,7 @@ export const InternalContainer = styled.div`
 
   display: grid;
   grid-template-columns: 1fr;
-  grid-template-rows: minmax(1fr, 10px) minmax(1fr, 40px) 1fr 1fr 1fr 1fr;
+  grid-template-rows: minmax(1fr, 10px) minmax(1fr, 40px) 2fr 1fr 1fr 1fr;
   grid-template-areas:
     "isOpened"
     "title"
@@ -30,7 +33,6 @@ export const InternalContainer = styled.div`
     p {
       font-size: 0.9rem;
       font-weight: 500;
-      color: #4fc641;
     }
   }
 
@@ -38,7 +40,7 @@ export const InternalContainer = styled.div`
     grid-area: title;
     p {
       color: #444444;
-      font-size: 1.4rem;
+      font-size: 1rem;
       font-weight: 600;
       margin: 0px;
     }

@@ -8,25 +8,12 @@ import Caption from "./components/Caption";
 
 import Home from "./pages/Home";
 import Card from "./components/Card";
+import CardList from "./components/CardList";
 
 function App() {
-  // const { units } = useUnits();
-  // const [weekdays, setWeekdays] = useState("all");
-  // const [opened, setOpened] = useState(true);
-
-  // const handleClick = () => {
-  //   console.log(weekdays);
-  //   console.log(opened);
-  // };
-
-  // const handleChange = () => {
-  //   setOpened(!opened);
-  // };
-
   return (
     <div className="App">
-      {/* <Home /> */}
-      <Card />
+      <CardList />
     </div>
   );
 }
