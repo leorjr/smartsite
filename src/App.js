@@ -8,12 +8,14 @@ import Caption from "./components/Caption";
 
 import Home from "./pages/Home";
 import Header from "./components/Header";
+import Footer from "./components/Footer";
 
 function App() {
   return (
     <div className="App">
       {/* <Home /> */}
-      <Header />
+      {/* <Header /> */}
+      <Footer />
     </div>
   );
 }
