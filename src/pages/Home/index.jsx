@@ -3,6 +3,9 @@ import Imagem from "../../assets/icon-hour.png";
 import CardList from "../../components/CardList";
 import { useState } from "react";
 import locations from "../../db/locations.json";
+import Header from "../../components/Header";
+import Footer from "../../components/Footer";
+import Caption from "../../components/Caption";
 
 const Home = () => {
   //Utilizando dados mock do JSON por conta de que algumas vezes a API ficava indisponível mas,
@@ -89,6 +92,7 @@ const Home = () => {
 
   return (
     <>
+      <Header />
       <SectionStyled>
         <ContainerStyled>
           <div className="icon">
@@ -169,7 +173,9 @@ const Home = () => {
           </div>
         </ContainerStyled>
       </SectionStyled>
+      <Caption />
       <CardList units={filtrados} />
+      <Footer />
     </>
   );
 };

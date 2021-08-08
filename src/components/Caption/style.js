@@ -2,6 +2,7 @@ import styled from "styled-components";
 
 export const SectionStyled = styled.section`
   width: 95%;
+  max-width: 780px;
   margin: 0 auto;
 
   background-color: #ededed;
