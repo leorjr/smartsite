@@ -10,6 +10,10 @@ export const ExternalContainer = styled.div`
   border: 2px solid #ededed;
 
   margin: 5px;
+
+  @media (max-width: 767px) {
+    width: 300px;
+  }
 `;
 
 export const InternalContainer = styled.div`

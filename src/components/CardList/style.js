@@ -14,4 +14,9 @@ export const InternalContainer = styled.div`
   align-items: center;
   justify-content: center;
   grid-template-columns: 1fr 1fr 1fr;
+
+  @media (max-width: 767px) {
+    width: 90%;
+    grid-template-columns: 1fr;
+  }
 `;
