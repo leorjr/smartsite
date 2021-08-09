@@ -3,9 +3,13 @@ import styled from "styled-components";
 export const SectionStyled = styled.section`
   width: 95%;
   max-width: 780px;
-  margin: 0 auto;
+  margin: 20px auto;
 
   background-color: #ededed;
+
+  @media (max-width: 767px) {
+    display: none;
+  }
 `;
 
 export const ContainerStyled = styled.div`
@@ -30,7 +34,7 @@ export const ContainerStyled = styled.div`
       column-gap: 10px;
 
       figure {
-        width: 30px;
+        width: 40px;
         margin: 0 auto;
         img {
           width: 100%;
@@ -52,7 +56,7 @@ export const ContainerStyled = styled.div`
       column-gap: 10px;
 
       figure {
-        width: 30px;
+        width: 40px;
         margin: 0 auto;
         img {
           width: 100%;
@@ -74,7 +78,7 @@ export const ContainerStyled = styled.div`
       column-gap: 10px;
 
       figure {
-        width: 30px;
+        width: 40px;
         margin: 0 auto;
         img {
           width: 100%;
@@ -96,7 +100,7 @@ export const ContainerStyled = styled.div`
       column-gap: 10px;
 
       figure {
-        width: 30px;
+        width: 40px;
         margin: 0 auto;
         img {
           width: 100%;

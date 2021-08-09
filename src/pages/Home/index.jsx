@@ -6,6 +6,7 @@ import locations from "../../db/locations.json";
 import Header from "../../components/Header";
 import Footer from "../../components/Footer";
 import Caption from "../../components/Caption";
+import GeneralInfo from "../../components/GeneralInfo";
 
 const Home = () => {
   //Utilizando dados mock do JSON por conta de que algumas vezes a API ficava indisponível mas,
@@ -93,6 +94,7 @@ const Home = () => {
   return (
     <>
       <Header />
+      <GeneralInfo />
       <SectionStyled>
         <ContainerStyled>
           <div className="icon">
@@ -157,7 +159,9 @@ const Home = () => {
               />
               <label for="closed">Exibir unidades fechadas</label>
             </div>
-            <p>Resultados encontrados: {filtrados.length}</p>
+            <p className="results">
+              Resultados encontrados: <span>{filtrados.length}</span>
+            </p>
           </div>
           <div className="controlles">
             <div className="search">

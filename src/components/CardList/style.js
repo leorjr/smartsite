@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const ExternalContainer = styled.section`
   width: 90%;
-  margin: 0 auto;
+  margin: 20px auto;
   max-width: 780px;
 `;
 

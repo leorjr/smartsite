@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const ExternalContainer = styled.section`
   width: 80%;
-  margin: 0 auto;
+  margin: 20px auto;
   max-width: 780px;
 
   display: flex;
@@ -29,5 +29,15 @@ export const ExternalContainer = styled.section`
   p {
     text-align: left;
     font-size: 0.8rem;
+  }
+
+  @media (max-width: 767px) {
+    h1 {
+      width: 80%;
+    }
+
+    p {
+      text-align: justify;
+    }
   }
 `;
