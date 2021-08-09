@@ -6,14 +6,10 @@ export const SectionStyled = styled.section`
   margin: 20px auto;
 
   background-color: #ededed;
-
-  @media (max-width: 767px) {
-    display: none;
-  }
 `;
 
 export const ContainerStyled = styled.div`
-  width: 95%;
+  width: 90%;
   max-width: 653px;
   margin: 0 auto;
 
@@ -110,6 +106,89 @@ export const ContainerStyled = styled.div`
       p {
         font-size: 0.8rem;
         font-weight: 300;
+      }
+    }
+  }
+
+  @media (max-width: 767px) {
+    grid-column-gap: 10px;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr;
+    grid-template-areas:
+      "mascara"
+      "toalha"
+      "bebedouro"
+      "vestiario";
+
+    div.mascara {
+      div {
+        column-gap: 5px;
+
+        figure {
+          width: 60px;
+          img {
+            width: 100%;
+          }
+        }
+
+        p {
+          font-size: 0.9rem;
+          font-weight: 300;
+        }
+      }
+    }
+
+    div.toalha {
+      div {
+        column-gap: 5px;
+
+        figure {
+          width: 60px;
+          img {
+            width: 100%;
+          }
+        }
+
+        p {
+          font-size: 0.9rem;
+          font-weight: 300;
+        }
+      }
+    }
+
+    div.bebedouro {
+      div {
+        column-gap: 5px;
+
+        figure {
+          width: 60px;
+          img {
+            width: 100%;
+          }
+        }
+
+        p {
+          font-size: 0.9rem;
+          font-weight: 300;
+        }
+      }
+    }
+
+    div.vestiario {
+      div {
+        column-gap: 5px;
+
+        figure {
+          width: 60px;
+          img {
+            width: 100%;
+          }
+        }
+
+        p {
+          font-size: 0.9rem;
+          font-weight: 300;
+        }
       }
     }
   }
